@@ -15,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.activity.addCallback
 
 class MainActivity : AppCompatActivity() {
     private lateinit var urlInput: EditText
@@ -86,6 +87,15 @@ class MainActivity : AppCompatActivity() {
             settingsPanel.isVisible = !settingsPanel.isVisible
         }
 
+        onBackPressedDispatcher.addCallback(this) {
+            if (webView.canGoBack()) {
+                webView.goBack()
+            } else {
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
+            }
+        }
+
         if (urlInput.text.isNotBlank()) {
             openConfiguredSite()
             settingsPanel.isVisible = false
@@ -123,14 +133,6 @@ class MainActivity : AppCompatActivity() {
             raw
         } else {
             "https://$raw"
-        }
-    }
-
-    override fun onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack()
-        } else {
-            super.onBackPressed()
         }
     }
 
