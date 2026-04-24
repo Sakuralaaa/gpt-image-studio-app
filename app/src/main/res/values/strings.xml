@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GPT Image Studio</string>
+    <string name="project_url_hint">Cloud project URL</string>
+    <string name="oauth_key_hint">OAuth Key (Authorization)</string>
+    <string name="save">Save</string>
+    <string name="open">Open</string>
+    <string name="toggle_settings">Toggle settings panel</string>
+    <string name="url_required">Please input your project URL</string>
+</resources>
